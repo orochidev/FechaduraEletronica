@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SalaControle;
+package Modelo;
 
-import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -15,12 +16,12 @@ import java.util.ArrayList;
 public class Sala {
 
     private String id;
-    private Timestamp created_at, updated_at;
+    private SimpleDateFormat created_at, updated_at;
     private String codigo;
     private String url;
     private ArrayList horarios;
 
-    public Sala(String id, Timestamp created_at, Timestamp updated_at, String codigo, String url, ArrayList horarios) {
+    public Sala(String id, SimpleDateFormat created_at, SimpleDateFormat updated_at, String codigo, String url, ArrayList horarios) {
         this.id = id;
         this.created_at = created_at;
         this.updated_at = updated_at;
@@ -37,19 +38,19 @@ public class Sala {
         this.id = id;
     }
 
-    public Timestamp getCreated_at() {
+    public SimpleDateFormat getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Timestamp created_at) {
+    public void setCreated_at(SimpleDateFormat created_at) {
         this.created_at = created_at;
     }
 
-    public Timestamp getUpdated_at() {
+    public SimpleDateFormat getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(Timestamp updated_at) {
+    public void setUpdated_at(SimpleDateFormat updated_at) {
         this.updated_at = updated_at;
     }
 

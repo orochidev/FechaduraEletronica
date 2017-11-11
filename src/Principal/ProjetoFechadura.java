@@ -5,10 +5,11 @@
  */
 package Principal;
 
-import SalaControle.CRUDSala;
+import Controle.SalaControle;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import org.json.simple.parser.ParseException;
+import sun.util.calendar.BaseCalendar.Date;
 
 /**
  *
@@ -25,7 +26,7 @@ public class ProjetoFechadura {
      */
     public static void main(String[] args) throws IOException, MalformedURLException, ParseException, InterruptedException {
         // TODO code application logic here
-        CRUDSala crud = new CRUDSala();
+        SalaControle crud = new SalaControle();
 
         crud.updateSala();
     }
