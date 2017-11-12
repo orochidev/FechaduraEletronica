@@ -5,12 +5,12 @@
  */
 package Principal;
 
-import org.json.simple.parser.ParseException;
 import java.net.MalformedURLException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.net.URLConnection;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.URL;
 
 /**
@@ -32,15 +32,10 @@ public class Connection {
         }
     }
 
-    public static BufferedReader getJson(String url_json) throws IOException{
+    public static BufferedReader getJson(String url_json) throws ConnectException, MalformedURLException, IOException{
+        URL url = new URL(url_json);
+        URLConnection conn = url.openConnection();
 
-        try{
-            URL url = new URL(url_json);
-            URLConnection conn = url.openConnection();
-
-            return new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } catch (MalformedURLException ex) {
-            return null;
-        }
+        return new BufferedReader(new InputStreamReader(conn.getInputStream()));
     }
 }

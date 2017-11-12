@@ -5,11 +5,12 @@
  */
 package Principal;
 
+import javax.swing.JFrame;
+import javax.swing.JButton;
 import Controle.SalaControle;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.util.Scanner;
 import org.json.simple.parser.ParseException;
-import sun.util.calendar.BaseCalendar.Date;
 
 /**
  *
@@ -24,11 +25,18 @@ public class ProjetoFechadura {
      * @throws org.json.simple.parser.ParseException
      * @throws java.lang.InterruptedException
      */
-    public static void main(String[] args) throws IOException, MalformedURLException, ParseException, InterruptedException {
+    public static void main(String[] args) throws IOException, ParseException, InterruptedException {
         // TODO code application logic here
-        SalaControle crud = new SalaControle();
 
+        int myId = getId();
+
+        SalaControle crud = new SalaControle();
         crud.updateSala();
     }
-    
+
+    public static int getId(){
+        System.out.println("Digite o ID da fechadura.");
+        return new Scanner(System.in).nextInt();
+    }
+
 }
