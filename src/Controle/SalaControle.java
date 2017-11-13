@@ -5,16 +5,14 @@
  */
 package Controle;
 
-import org.json.simple.parser.ParseException;
-import org.json.simple.parser.JSONParser;
+
 import java.text.SimpleDateFormat;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
+
 import java.io.BufferedReader;
-import Principal.Connection;
+import model.ws.Connection;
 import java.io.IOException;
 import java.util.ArrayList;
-import Modelo.Sala;
+import model.Sala;
 
 /**
  *
@@ -33,7 +31,7 @@ public class SalaControle {
             salas = new ArrayList<>();	//enquanto as salas não estão sendo persistidos no banco de dados, elas serão armazenadas aqui
         }
 
-    public void updateSala() throws InterruptedException, ParseException, IOException{
+   /* public void updateSala() throws InterruptedException, ParseException, IOException{
 
         JSONParser parse = new JSONParser();    //usado para recuperar os jsons
         BufferedReader buffer;                  //buffer onde o arquivo json será armazenado
@@ -78,5 +76,5 @@ public class SalaControle {
         }
     }
 
-
+*/
 }
