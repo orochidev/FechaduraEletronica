@@ -7,7 +7,13 @@ package Controle;
 
 
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
 
+=======
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import java.net.ConnectException;
+>>>>>>> 44c0649061e8442dafa69ad62fa1e0f3b369cb5c
 import java.io.BufferedReader;
 import model.ws.Connection;
 import java.io.IOException;
@@ -41,14 +47,26 @@ public class SalaControle {
             System.out.println("Verificando conectividade ...");
             System.out.println("");
             if(!Connection.hasConnection()){    //se nao tiver conexao
-            System.out.println("Conectividade falhou!");
+                System.out.println("Conectividade falhou! Aguardando 60 seg");
                 Thread.sleep(1000*60);         	//aguarda 60 segundos
                 continue;						//e volta para o começo
             }
 
             System.out.println("conectividade OK.");
             System.out.println("Recuperando JSON");
-            buffer = Connection.getJson("http://127.0.0.6:8000/arquivo.json");	//dado o link, o arquivo JSON será recuperado
+
+            try {
+                buffer = Connection.getJson("http://localhost:8000/arquivo.json");	//dado o link, o arquivo JSON será recuperado
+            } catch (NullPointerException e) {      //se o link for invalido, entao sera retornado null
+                System.out.println("ERRO: NullPointerException. Aguardando 60 seg");
+                Thread.sleep(1000*60);
+                continue;
+            } catch (ConnectException ex) {
+                System.out.println("ERRO: link do JSON invalido. Aguardando 60 seg.");
+                Thread.sleep(1000*60);
+                continue;
+            }
+
             JSONArray arrayJson = (JSONArray) parse.parse(buffer);				//JSONArray, pois pode ter mais de um objeto sala no JSON
             System.out.println("JSON recuperado");
 
@@ -56,16 +74,15 @@ public class SalaControle {
 
                 JSONObject salaJson = (JSONObject) arrayJson.remove(arrayJson.size()-1);	//Dos vários objetos (salas) JSON dentro do array, pego um deles, o primeiro.
                 id = (String) salaJson.get("id");
+                codigo = (String) salaJson.get("codigo");
+                url = (String) salaJson.get("url");
+                horarios = (ArrayList<Sala>) salaJson.get("horarios");
 
                 ////o timestamp não pode ser deste formato: 2017-11-07T06:45:24.427-02:00, pois o "T" não faz parte. Então tenho que pegar a substring e concatenar as partes antes do "T" e a parte depois.
                 String timestamp = (String) salaJson.get("created_at");
                 created_at = new SimpleDateFormat(timestamp.substring(0, timestamp.indexOf("T")) + " " + timestamp.substring(timestamp.indexOf("T")+1));
                 timestamp = (String) salaJson.get("updated_at");
                 updated_at = new SimpleDateFormat(timestamp.substring(0, timestamp.indexOf("T")) + " " + timestamp.substring(timestamp.indexOf("T")+1));
-
-                codigo = (String) salaJson.get("codigo");
-                url = (String) salaJson.get("url");
-                horarios = (ArrayList<Sala>) salaJson.get("horarios");
 
                 Sala sala = new Sala(id, created_at, updated_at, codigo, url, horarios);
                 salas.add(sala);
@@ -76,5 +93,8 @@ public class SalaControle {
         }
     }
 
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 44c0649061e8442dafa69ad62fa1e0f3b369cb5c
 }

@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.net.URLConnection;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.ConnectException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
