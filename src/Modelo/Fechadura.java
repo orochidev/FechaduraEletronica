@@ -11,15 +11,29 @@ package Modelo;
  *
  * @author Orochi
  */
-abstract class Fechadura {
+abstract public class Fechadura {
     private Boolean aberta;
-    private Leitor leitor;
-    
-    public Fechadura(Leitor leitor){
-        this.leitor = leitor;
-        this.aberta = false;
+    private Leitor leitorAbertura;
+    private Leitor leitorFechamento;
+
+    private Sala sala;
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
     
+    
+    public Fechadura(Leitor leitor){
+        this.leitorAbertura = leitor;
+        this.aberta = false;
+    }
+    public String realizarLeitura(){
+        return leitorAbertura.realizarLeitura();
+    }
     abstract public void abrir();
     abstract public void fechar();
     public Boolean isAberta(){

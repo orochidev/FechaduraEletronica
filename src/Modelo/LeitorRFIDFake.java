@@ -12,8 +12,14 @@ package Modelo;
  * @author Orochi
  */
 public class LeitorRFIDFake extends LeitorRFID{
+    
+    private String leituraViciada;
+    
+    public void setLeituraViciada(String leituraFake){
+        this.leituraViciada = leituraFake;
+    }
     @Override
     public String realizarLeitura() {
-        return "Batata";
+        return leituraViciada;
     }    
 }

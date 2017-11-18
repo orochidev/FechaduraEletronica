@@ -5,10 +5,21 @@
  */
 package Modelo.ws;
 
+import Modelo.Sala;
+
 /**
  *
  * @author Orochi
  */
-public class WS {
-    public static String baseURL = "http://localhost:3000/";
+public class SalaWS extends WS{
+    private Sala sala;
+    public SalaWS(Sala sala) {
+        this.sala = sala;
+    }
+    
+    public static Sala getById(Integer id){
+        return new Sala();
+    }
+    
+    
 }

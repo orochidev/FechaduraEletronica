@@ -9,6 +9,6 @@ package Modelo;
  *
  * @author Orochi
  */
-public class Servidor {
+public class Servidor extends Pessoa {
     
 }

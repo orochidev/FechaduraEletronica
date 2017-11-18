@@ -21,5 +21,13 @@ public class Sala{
     private String id;
     private String codigo;
     private List<Horario> horarios;
-    
+    private Fechadura fechadura;
+   
+    public Boolean isAutorizado(Pessoa pessoa){
+        for(Horario horario: horarios){
+            if(pessoa instanceof Aluno){
+            }
+        }
+        return true;
+    }
 }

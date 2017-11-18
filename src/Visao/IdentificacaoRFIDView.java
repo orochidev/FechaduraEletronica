@@ -116,7 +116,7 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
 
     private void txtRFIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFIDActionPerformed
         if(!txtRFID.getText().isEmpty()){
-            RFID rfid =RFIDWS.getRFID(txtRFID.getText());
+            RFID rfid = RFIDWS.getRFID(txtRFID.getText());
             if(rfid != null){
                 txtNome.setText(rfid.getPessoa().getNome());
             }else{
@@ -124,7 +124,18 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtRFIDActionPerformed
-
+    public Boolean isVazioCampoRFID(){
+        return !txtRFID.getText().isEmpty();
+    }
+    public String getCampoRFID(){
+        return txtRFID.getText();
+    }
+    public void limpaCampoRFID(){
+        txtRFID.setText("");
+    }
+    public void setCampoNome(String string){
+        txtNome.setText(string);
+    }
     /**
      * @param args the command line arguments
      */

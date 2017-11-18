@@ -14,10 +14,13 @@ import java.util.List;
  *
  * @author Orochi
  */
-abstract public class Pessoa{
+abstract public class Pessoa implements Savable{
     private String nome;
+    private String type;
     private List<Credencial> credenciais;
-
+    
+    
+    
     public String getNome() {
         
         return nome;

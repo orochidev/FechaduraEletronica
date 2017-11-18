@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controle;
 
 /**
  *
  * @author Orochi
  */
-public class Professor extends Pessoa {
-    
+public interface OnLeituraRFIDListener {
+    public void runSuccess();
+    public void runError();
 }

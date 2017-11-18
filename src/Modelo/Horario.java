@@ -15,8 +15,32 @@ import java.util.List;
  */
 public class Horario {
     private Integer id;
-    private String tipo_permitido;
-    private Sala sala;
+    private String tipoPermitido;
     private List<HorarioItem> horarioItens;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTipoPermitido() {
+        return tipoPermitido;
+    }
+
+    public void setTipoPermitido(String tipoPermitido) {
+        this.tipoPermitido = tipoPermitido;
+    }
+
+    public List<HorarioItem> getHorarioItens() {
+        return horarioItens;
+    }
+
+    public void setHorarioItens(List<HorarioItem> horarioItens) {
+        this.horarioItens = horarioItens;
+    }
+    
     
 }

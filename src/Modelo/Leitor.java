@@ -11,6 +11,6 @@ package Modelo;
  *
  * @author Orochi
  */
-abstract class Leitor {
+abstract public class Leitor {
     abstract public String realizarLeitura();
 }

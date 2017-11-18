@@ -3,12 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Modelo.dao;
+
+import Modelo.Entrada;
 
 /**
  *
  * @author Orochi
  */
-public class Professor extends Pessoa {
+public class EntradaDAO {
+    private Entrada entrada;
+
+    public EntradaDAO(Entrada entrada) {
+        this.entrada = entrada;
+    }
     
+    public void save(){
+        
+    }
 }

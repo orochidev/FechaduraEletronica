@@ -5,10 +5,20 @@
  */
 package Modelo.ws;
 
+import Modelo.Entrada;
+
 /**
  *
  * @author Orochi
  */
-public class WS {
-    public static String baseURL = "http://localhost:3000/";
+public class EntradaWS extends WS {
+    private Entrada entrada;
+    
+    public EntradaWS(Entrada entrada){
+        this.entrada = entrada;
+    }
+    
+    public void save(){
+    }
+    
 }
