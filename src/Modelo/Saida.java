@@ -10,5 +10,10 @@ package Modelo;
  * @author Orochi
  */
 public class Saida extends Evento {
+
+    @Override
+    public boolean save() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

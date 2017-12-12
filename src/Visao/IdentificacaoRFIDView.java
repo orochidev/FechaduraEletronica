@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import Controle.IdentificacaoRFIDController;
 import Modelo.RFID;
 import Modelo.ws.RFIDWS;
 
@@ -16,9 +17,11 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
 
     /**
      * Creates new form IdentificacaoRFIDView
-     */
+    */
+    private IdentificacaoRFIDController controller;
     public IdentificacaoRFIDView() {
         initComponents();
+        controller = new IdentificacaoRFIDController(this);
     }
 
     /**
@@ -36,6 +39,7 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
         lblAcessoLiberado = new javax.swing.JLabel();
         lblEstado1 = new javax.swing.JLabel();
         txtRFID = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +50,7 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
         txtNome.setEditable(false);
 
         lblAcessoLiberado.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblAcessoLiberado.setText("Acesso liberado!");
+        lblAcessoLiberado.setText("...");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,7 +65,7 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(lblAcessoLiberado)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,30 +88,46 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Configurar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblEstado1)
-                .addGap(104, 104, 104))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtRFID))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRFID)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblEstado1)
+                                .addGap(104, 104, 104))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(26, 26, 26))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblEstado1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtRFID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -115,17 +135,22 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtRFIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFIDActionPerformed
-        if(!txtRFID.getText().isEmpty()){
+      /*  if(!txtRFID.getText().isEmpty()){
             RFID rfid = RFIDWS.getRFID(txtRFID.getText());
             if(rfid != null){
                 txtNome.setText(rfid.getPessoa().getNome());
             }else{
                 txtNome.setText("RFID NÃO CADASTRADO");
             }
-        }
+        }*/
+      controller.actionLeituraRFID();
     }//GEN-LAST:event_txtRFIDActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new ConfiguracaoView().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     public Boolean isVazioCampoRFID(){
-        return !txtRFID.getText().isEmpty();
+        return txtRFID.getText().isEmpty();
     }
     public String getCampoRFID(){
         return txtRFID.getText();
@@ -172,6 +197,7 @@ public class IdentificacaoRFIDView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAcessoLiberado;

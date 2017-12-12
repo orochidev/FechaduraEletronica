@@ -15,13 +15,7 @@ import Modelo.ws.EntradaWS;
  */
 public class Entrada extends Evento{
 
-    @Override
-    public void save() {
-        if(Connection.hasConnection()){
-           new EntradaWS(this).save();
-        }else{
-           new EntradaDAO(this).save();
-        }
-    }
-    
+
+
+
 }

@@ -7,6 +7,7 @@ package Modelo;
  */
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -14,9 +15,34 @@ import java.util.List;
  *
  * @author Orochi
  */
-abstract public class Pessoa implements Savable{
+abstract public class Pessoa implements  Serializable{
     private String nome;
     private String type;
+    private Integer id;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Credencial> getCredenciais() {
+        return credenciais;
+    }
+
+    public void setCredenciais(List<Credencial> credenciais) {
+        this.credenciais = credenciais;
+    }
     private List<Credencial> credenciais;
     
     

@@ -16,8 +16,8 @@ import Modelo.ws.Connection;
 public class Aluno extends Pessoa{
 
     @Override
-    public void save() {
-
+    public boolean save() {
+        return true;
     }
     
 }

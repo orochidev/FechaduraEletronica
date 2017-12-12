@@ -5,7 +5,14 @@
  */
 package Modelo.ws;
 
+import Modelo.Pessoa;
+import Modelo.RFID;
 import Modelo.Sala;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,5 +28,12 @@ public class SalaWS extends WS{
         return new Sala();
     }
     
-    
+    public static List<Sala> getAll(){
+         Gson gson = new GsonBuilder().create();
+        String json = Connection.getJson(WS.baseURL + "salas.json");
+        System.out.println(WS.baseURL + "salas.json");
+        List<Sala> retorno = gson.fromJson(json, new TypeToken<ArrayList<Sala>>(){}.getType());
+         return retorno;
+      
+    }
 }

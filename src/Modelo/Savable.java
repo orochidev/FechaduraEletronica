@@ -10,5 +10,5 @@ package Modelo;
  * @author Orochi
  */
 public interface Savable {
-    public void save();
+    public boolean save();
 }

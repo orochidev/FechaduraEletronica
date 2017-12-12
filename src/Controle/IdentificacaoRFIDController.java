@@ -14,8 +14,10 @@ import Modelo.Pessoa;
 import Modelo.Projeto;
 import Modelo.RFID;
 import Modelo.Sala;
+import Modelo.ws.EntradaWS;
 import Modelo.ws.RFIDWS;
 import Visao.IdentificacaoRFIDView;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.transaction.Transactional;
@@ -37,17 +39,20 @@ public class IdentificacaoRFIDController {
     
     public void actionLeituraRFID(){
         if(!view.isVazioCampoRFID()){
+
             RFID rfid = RFIDWS.getRFID(view.getCampoRFID());                
             if(rfid != null){
                Pessoa pessoa = rfid.getPessoa();
                Sala sala = Projeto.getInstance().getSala();
-                view.setCampoNome(pessoa.getNome());
+               view.setCampoNome(pessoa.getNome());
                 
                 Entrada entrada = new Entrada();
                 entrada.setPessoa(pessoa);
                 entrada.setSala(sala);
+                entrada.setRegistradoEm(new Date());
+                EntradaWS ws = new EntradaWS(entrada);
+                ws.save();
                 
-                entrada.save();
             }else{
                 actionRFIDInvalido();
             }

@@ -11,6 +11,7 @@ package Modelo;
  */
 public class Projeto {
     private static Projeto projeto;
+    private Sala sala;
     
     public static Projeto getInstance(){
         if(projeto == null){
@@ -18,8 +19,12 @@ public class Projeto {
         }
         return projeto;
     }
-    
     public Sala getSala(){
-        return new Sala();
+        return sala;
     }
+    public void setSala(Sala sala){
+        this.sala = sala;
+    }
+    
+
 }

@@ -18,8 +18,41 @@ import java.util.List;
  */
 public class Sala{
 
-    private String id;
+    private Integer id;
     private String codigo;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+
+    public List<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = horarios;
+    }
+
+    public Fechadura getFechadura() {
+        return fechadura;
+    }
+
+    public void setFechadura(Fechadura fechadura) {
+        this.fechadura = fechadura;
+    }
     private List<Horario> horarios;
     private Fechadura fechadura;
    
@@ -29,5 +62,9 @@ public class Sala{
             }
         }
         return true;
+    }
+    @Override
+    public String toString(){
+        return codigo;
     }
 }
